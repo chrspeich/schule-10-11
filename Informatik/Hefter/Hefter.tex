@@ -1,0 +1,58 @@
+\documentclass[
+			bigheadings,
+			ngerman,
+			a4paper,
+			BCOR5mm,
+			DIV11,
+			1.1headlines,
+			headexclude,
+			footerexclude,
+			mpeclude,
+			pagesize,
+			twoside,
+			onecolumn,
+			openright,
+			titelpage,
+			parindent,
+			nochapterprefix,
+			bibtotoc,
+			listsindent,
+			pointlessnumbers,
+			fleqn]{scrbook}
+ 
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{pstricks,pst-plot}
+\usepackage{pst-math}
+\usepackage{pst-pdf}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{amsmath}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{psfrag}
+\usepackage{textcomp}
+\usepackage{wrapfig}
+\usepackage{struktex}
+\usepackage{minted}
+\usepackage{multicol}
+
+\title{Informatik}
+\author{Christian Speich}
+\date{2010/2011}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\part{Kommunikation und Netze}
+
+\input{Themen/Kommuniktation-Netze}
+\input{Themen/Nachrichten-Signale}
+
+\end{document}  
