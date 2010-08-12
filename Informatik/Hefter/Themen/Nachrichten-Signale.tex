@@ -10,19 +10,18 @@
 \subsection{Kontinuierliche oder diskrete Signale}
 Ein Signal kann sowohl im Wert als auch in der Zeit kontinuierlich oder diskret sein. 
 
-\paragraph{Zeit- und wertkontinuierlich}
+\begin{multicols}{2}
+\minisec{Zeit- und wertkontinuierlich:}
 
 \begin{pspicture}(-0.5,-0.5)(5,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=none]{->}(0,0)(0,0)(5,2) 
 \uput{1ex}[180](0,1.9){$w$} 
 \uput{1ex}[270](4.9,0){$t$}
 
-\psplot[plotstyle=curve]{0.01}{5}{x 2 mul SIN 2 div 1 add}
-
-\uput{1ex}[270](2,1.5){$w(t)$}
+\psplot[plotstyle=curve,linecolor=red]{0.01}{5}{x 2 mul SIN 2 div 1 add}
 
 \end{pspicture}
-\paragraph{Wertkontinuierlich und zeitdiskret}
+\minisec{Wertkontinuierlich und zeitdiskret:}
 
 \begin{pspicture}(-0.5,-0.5)(5,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,0)(5,2) 
@@ -39,7 +38,7 @@
 \psline[linecolor=red](4,0)(4,1.0)
 
 \end{pspicture}
-\paragraph{Wertdiskret und zeitkontinuierlich}
+\minisec{Wertdiskret und zeitkontinuierlich:}
 
 \begin{pspicture}(-0.5,-0.5)(5,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,0)(5,2) 
@@ -55,7 +54,7 @@
 \psline[linecolor=red](4,0)(5,0)
 
 \end{pspicture}
-\paragraph{Wert- und zeitdiskret}
+\minisec{Wert- und zeitdiskret:}
 
 \begin{pspicture}(-0.5,-0.5)(5,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=none]{->}(0,0)(0,0)(5,2) 
@@ -72,9 +71,127 @@
 \qdisk(4,1.0){2pt} 
 
 \end{pspicture}
-\subsection{Quantisierung von analogen Signalen}Ist die Zuordnung von Zeitintervallen und Klassifizierung in diskrete Werte. (Dia Info3)
+\end{multicols}
+\subsection{Quantisierung von analogen Signalen}Ist die Zuordnung von Zeitintervallen und Klassifizierung in diskrete Werte.
 
+\begin{pspicture}(-0.5,-0.5)(10,2) 
+\psaxes[linewidth=1pt,labels=none,ticks=none]{->}(0,0)(0,0)(5,2) 
+\uput{1ex}[180](0,1.9){$w$} 
+\uput{1ex}[270](4.9,0){$t$}
+
+\psplot[plotstyle=curve]{0.01}{5}{x 2 mul SIN 2 div x 4 div 1 add mul 1 add}
+\psline[linecolor=red]{->}(0.5,0)(0.5,1.5)
+\psline[linecolor=red,linestyle=dashed](0.5,1.5)(1,1.5)
+\psline[linecolor=red]{->}(1.0,0)(1.0,1.6)
+\psline[linecolor=red,linestyle=dashed](1,1.6)(1.5,1.6)
+\psline[linecolor=red,linestyle=dashed](1.5,1.6)(1.5,1.1)
+\psline[linecolor=red]{->}(1.5,0)(1.5,1.1)
+\psline[linecolor=red,linestyle=dashed](1.5,1.1)(2,1.1)
+\psline[linecolor=red,linestyle=dashed](2,1.1)(2,0.4)
+\psline[linecolor=red]{->}(2.0,0)(2.0,0.4)
+\psline[linecolor=red,linestyle=dashed](2,0.4)(2.5,0.4)
+\psline[linecolor=red,linestyle=dashed](2.5,0.4)(2.5,0.2)
+\psline[linecolor=red]{->}(2.5,0)(2.5,0.2)
+\psline[linecolor=red,linestyle=dashed](2.5,0.2)(3,0.2)
+\psline[linecolor=red]{->}(3.0,0)(3.0,0.7)
+\psline[linecolor=red,linestyle=dashed](3,0.7)(3.5,0.7)
+\psline[linecolor=red]{->}(3.5,0)(3.5,1.6)
+\psline[linecolor=red,linestyle=dashed](3.5,1.6)(4,1.6)
+\psline[linecolor=red]{->}(4.0,0)(4.0,2.0)
+\psline[linecolor=red,linestyle=dashed](4,2.0)(4.5,2.0)
+\psline[linecolor=red,linestyle=dashed](4.5,2.0)(4.5,1.4)
+\psline[linecolor=red]{->}(4.5,0)(4.5,1.4)
+
+\psline[linecolor=red]{->}(5.6,1.3)(6,1.3)
+\uput{1ex}[0](6,1.3){Abtastung} 
+\psline[linecolor=red,linestyle=dashed](5.6,0.8)(6,0.8)
+\uput{1ex}[0](6,0.8){Klasifizierung} 
+
+\end{pspicture}
+\definecolor{darkgreen}{rgb}{0,.6,0}
 \begin{description}\item[Digitales Signal] endlich viele Werte
 \begin{description}\item[Binär] zwei Werte\item[Ternär] drei Werte
 \end{description}\item[analoges Signal] unendlich viele Werte
 \end{description}
+
+\section{Schritt- und Übertragungsgeschwindigkeit}\paragraph{Einheitsschritt} $T_s$ Zeitdauer für die Übertragung eines Signals:
+
+\begin{pspicture}(-0.5,-1)(5,1.5) 
+\psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,-1)(5,1) 
+\uput{1ex}[270](4.9,0){$t$}
+
+\psline[linecolor=darkgreen]{-}(0,0.5)(1,0.5)
+\psline[linecolor=darkgreen]{-}(1,0.5)(1,-0.5)
+\psline[linecolor=darkgreen]{-}(1,-0.5)(2,-0.5)
+\psline[linecolor=darkgreen]{-}(2,-0.5)(2,0.5)
+\psline[linecolor=darkgreen]{-}(2,0.5)(4,0.5)
+\psline[linecolor=darkgreen,linestyle=dashed]{-}(3,-0.5)(3,0.5)
+\psline[linecolor=darkgreen]{-}(4,0.5)(4,-0.5)
+\psline[linecolor=darkgreen]{-}(4,-0.5)(4.7,-0.5)
+\psline[linecolor=red,linewidth=1.2pt]{[-]}(0,0)(1,0)
+\uput{1ex}[270](0.5,0){\color{red}$T_s$}
+
+\end{pspicture}
+\paragraph{Schrittgeschwindigkeit} $S=\frac{1}{T_s}$ Maßeinheit: Baud% (1 Baud = 1 Signal je Sekunde)
+
+\paragraph{Signal} Kennzustand für die Dauer eines Einheitsschrittes
+
+\begin{pspicture}(-0.5,-1)(5,1.5) 
+\psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,-1)(5,1) 
+\uput{1ex}[270](4.9,0){$t$}
+
+\psplot[plotstyle=curve,linecolor=red]{0.01}{1}{x PI 4 mul mul SIN 2 div}
+\psplot[plotstyle=curve,linecolor=red]{1}{2}{x PI 2 mul mul SIN 2 div}
+\psplot[plotstyle=curve,linecolor=red]{2}{4}{x 4 PI mul mul SIN 2 div}
+\psplot[plotstyle=curve,linecolor=red]{4}{4.8}{x PI 2 mul mul SIN 2 div}
+
+\uput{1ex}[90](0.5,0.5){\color{red}$1$}
+\uput{1ex}[90](1.5,0.5){\color{red}$0$}
+\uput{1ex}[90](2.5,0.5){\color{red}$1$}
+\uput{1ex}[90](3.5,0.5){\color{red}$1$}
+\uput{1ex}[90](4.5,0.5){\color{red}$1$}
+
+\end{pspicture}
+\subsection{Übertragungsgeschwindigkeit}$U = bit/s$Wichtig: Bei nicht-binärer Übertragung U != SBeispiel: Übertragung mit 4 Kennzuständen
+
+\begin{pspicture}(-2,-1)(5,2) 
+\psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,-1)(5,1.5) 
+\uput{1ex}[270](4.9,0){$t$}
+
+\psline[linecolor=darkgreen]{-}(0,0)(1,0)
+\psline[linecolor=darkgreen]{-}(1,0)(1,0.5)
+\psline[linecolor=darkgreen]{-}(1,0.5)(2,0.5)
+\psline[linecolor=darkgreen]{-}(2,0.5)(2,1)
+\psline[linecolor=darkgreen]{-}(2,1)(3,1)
+\psline[linecolor=darkgreen]{-}(3,1)(3,-0.5)
+\psline[linecolor=darkgreen]{-}(3,-0.5)(4,-0.5)
+
+\uput{1ex}[180](0,0){\color{red}$00_{2} = 0$}
+\psline[linecolor=red,linewidth=0.5pt,linestyle=dashed]{-}(0,0)(4.9,0)
+\uput{1ex}[180](0,0.5){\color{red}$01_{2} = 1$}
+\psline[linecolor=red,linewidth=0.5pt,linestyle=dashed]{-}(0,0.5)(4.9,0.5)
+
+\uput{1ex}[180](0,1){\color{red}$10_{2} = 2$}
+\psline[linecolor=red,linewidth=0.5pt,linestyle=dashed]{-}(0,1)(4.9,1)
+
+\uput{1ex}[180](0,-0.5){\color{red}$11_{2} = 3$}
+\psline[linecolor=red,linewidth=0.5pt,linestyle=dashed]{-}(0,-0.5)(4.9,-0.5)
+
+
+\end{pspicture}
+In einem Einheitsschritt können 2 Bit übertragen werden (S=1; U=2)\section{Übertragungsmedien}
+
+\begin{tabular}{p{0.25\textwidth}|p{0.35\textwidth}|p{0.35\textwidth}}
+
+Art & Vorteile & Nachteile\\
+\hline
+\hline
+elektrischer Strom (Metallkabel) & Kostengünstig, (stabil) & Große Entfernungen, bauliche Eingriffe \\
+\hline
+Radiowellen, Infrarot, Mikrowelle (Luft, Vakuum) & Kein Medium nötig & Langsam, störanfällig, u.U. Störquelle, Energiebedarf\\
+\hline
+Lich (LWL) & Extrem schnell, hoher Durchsatz & Teuer, reparaturunfreundlich
+
+\end{tabular}
+\subsection{Bemerkungen}
+\minisec{Elektrischer Strom}Material: Kupfer — bestes Preis/LeistungsverhältnisAufbau: Twised Pairs - Verdrillte Kabelpaare (Verringerung von Interferenzen)Koaxialkabel\minisec{Elektromagnetische Wellen}Bedingung: Sender und Empfänger (Realisationen) müssen quasioptisch verbunden sein. Zusätzliche Empfangseinrichtung notwendig. Problem: Abschirmung der übertragenen Informationen\minisec{Licht}Basis: Bessere Kodierungsmöglichkeit (Multiplex) des LichtesVorteil: keine elektromagnetischen Störungen
