@@ -1,0 +1,87 @@
+\chapter{Computernetze}
+
+\section{Netztopologien}
+
+\paragraph{Bustopologie}
+
+\begin{description}
+\item[Vorteile]
+\begin{itemize}\item Einfache Realisierung
+\end{itemize}\item[Nachteile]
+\begin{itemize}\item Alle Teilnehmer müssen sich die max. Datengeschwindigkeit teilen\item Bei defektem Bussegment Erreichbarkeit einiger Rechner nicht gesichert\item Terminator erforderlich (Abschlusswiderstand)
+\end{itemize}\item[Beispiele] ISDN, ThinWire-Koaxialkabel
+\end{description}
+
+\section{Sterntopologie}
+
+\begin{description}
+\item[Vorteile]
+\begin{itemize}\item Unabhängigkeit der einzelnen Computer
+\end{itemize}\item[Nachteile]
+\begin{itemize}\item Aufwendigkeit
+\item Bei Defekt des zentralen Computers/Koppelelements kein Betrieb möglich
+\end{itemize}\item[Beispiele] Ethernet
+\end{description}
+
+\section{Ringtopologie}
+
+\begin{description}
+\item[Vorteile]
+\begin{itemize}\item Betrieb kann bei Ausfall eines Ringsegments aufrecht erhalten werden
+\end{itemize}\item[Nachteile]
+\begin{itemize}\item Kommunikation immer nur zwischen zwei Computern
+\end{itemize}\item[Beispiele] Token-Ring, FDDI
+\end{description}
+
+\section{Maschentopologie}
+
+\begin{description}
+\item[Vorteile]
+\begin{itemize}\item Sehr effiziente Kommunikation zwischen den Computern möglich
+\end{itemize}\item[Nachteile]
+\begin{itemize}\item Extrem aufwendig
+\end{itemize}\item[Beispiele]
+\end{description}
+
+
+\section{Baumtopologie}
+
+\begin{description}
+\item[Vorteile]
+\begin{itemize}\item Aufgabenstruktur kann abgebildet werden
+\end{itemize}\item[Nachteile]
+\begin{itemize}\item Oft nur temporäre Lösung
+\end{itemize}\item[Beispiele]
+\end{description}
+
+\section{Zugriffsverfahren}
+
+\subsection{Vorüberlegung Signallaufzeit}
+
+Bei jedem Kabel existiert eine Konstante k, mit welcher die Ausbreitungsgeschwindigkeit  elektrischer Signale beschrieben wird. (Vakuum: 1.0c, Koaxialkabel: 0.77c, TwistedPair 0.66c)Zwischen Station A und B soll kommuniziert werden. Station A sendet zum Zeitpunkt t eine Nachricht. Station B sendet eine Nachricht zum Zeitpunkt t+T-dt. Siehe ZeichnungFür die Information das eine Nachricht erfolgreich von Station A zur Station B übermittet worden ist wird die doppelte Signallaufzeit 2T mit T =d/k*c, wobei d - Räumliche Entfernung, c - Lichtgeschwindigkeit, k - Materialkonstante.Signallaufzeit spielt bei Zugriffsverfahren eine besondere Rolle. 
+
+\subsection{Deterministische Zugriffsverfahren}
+
+\begin{description}
+\item[Problem] Wollen mehrere Computerpaare gleichzeitig im Netz (z.b. Ring) kommunizieren, kann es zur Kollision kommen. Die Pegel der Nachrichten können sich überlagern oder auslöschen, wodurch die Signalfolge unbrauchbar wird. \item[Ausweg] Einrichtung eines Berechtigungszeichens zum Senden (Token): nur der zeitweilige Besitzer des Zeichens darf senden. Nach Übermittlung wird das Token-Element weitergegeben.
+\end{description}
+
+\subsection{Stochastische Zugriffsverfahren}
+
+Unter Verwendung von Zufallsinformationen wird der Zugriff einzelner Computer auf Netzwerkverbindungen reguliert. 
+
+\paragraph{Ursprung: ALOHA-Verfahren (1970 Uni Hawaii)}Funknetz wird nach dem Prinzip betrieben: Jeder darf zu jedem Zeitpunkt senden; Bestätigung über separaten Kanal. 
+Bei Bestätigung -> Weitersenden
+Bei ausbleibender Bestätigung (Kollision) ->  zufällige Wahl eines neuen neuen Sendezeitpunktes
+=> Datenstau wird abgebaut
+Optimale Sendeverhältnisse, wenn 18% der möglichen Sendezeit genutzt werden. \subparagraph{Modifikation} jeder darf nur zu Beginn eines festgelegten Zeitintervalls versuchen zu senden.
+
+\paragraph{CSMA/CD-Verfahren}(Carrier Sense Multiple Access / Collision Detect)
+
+\begin{itemize}\item Hineinhören in die Leitung\item Falls freie Leitung: Sendebeginn\item Mithören während der gesamten Sendung\item Falls Kollision: Sendende Stationen produzieren JAM-Signal.\item Übertragung der Datenpakete wird abgebrochen\item Sendewillige Stationen warten einen zufällig bestimmten Zeitraum und versuchen es erneut
+\end{itemize}\paragraph{JAM-Signal} 32bit-Folge: 101010… 
+
+\paragraph{Wichtig} Für die Erkennung von Kollisionen muss die Dauer Übertragung eines Datenblocks mindestens 2T betragen. \paragraph{Beispiel} 10Base-Ethernet => 10Mbit/s, 2,5km Stationsentfernung, 64byte Paketgröße => 512bit. t = 51,2 Mikro Sekunden.10Base -> Koaxialkabel => k=0,77Zurückgelegter Weg der Nachrichtenspitze im Koaxialkabel: $0,77 * 3*10^5 * 51,2*10^-3 = 11827m$2T = 2,16e-4 Sekunden\paragraph{Merke} 
+\begin{itemize}\item Der Konfliktparameter k = Maximale Signallaufzeit /  Nachrichtenübertraungszeit muss kleiner 1 sein\item Bei den üblichen Netzstandards ergibt sich für die größte zulässige Netzlänge und die kleinste zulässige Paketgröße k ungefähr 0,21
+\end{itemize}$ Wartezeit = ZZ \cdot T $ZZ Zufallszahl aus $0<ZZ<2^n$
+N - Anzahl der Wiederholungen (max 10)

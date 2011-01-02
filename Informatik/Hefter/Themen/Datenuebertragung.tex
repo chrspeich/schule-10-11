@@ -1,0 +1,135 @@
+\chapter{Datenübertragung}
+
+\section{Spannungs-Zeit-Diagramm}
+
+Bestand einer Nachrichtenübertragung:
+
+\begin{enumerate}
+\item Start- und Stoppsignal
+\item eigentliche Nachricht
+\item Paritätssignal (Sicherheitsinformation)
+\end{enumerate}
+
+Betrachtung zunächst an der Übertragung binärer Signale (0=+15, 1=-15)
+Grundlage: RS 232 - Standard der seriellen Datenübertragung
+\begin{itemize}\item Kufperkabel\item Spannung zwischen 3 und 15 Volt (0 Volt nicht zu gelassen)\item Ruhezustand: -15V\item Startbit: +15V\item Stoppbit: -15V (1/1,5/2 Bit)\item Paritätsbit
+\end{itemize}Parität: gerade oder ungerade bedeutet, dass die Anzahl der übertragenen 1-Informationen durch das Paritätsbit zu einer geraden/ungeraden Zahl ergänzt wird.
+
+Bei binärer Information entspricht die Baudzahl der Zahl der übertragenen Bits(einschließlich Startt-/Stopp-/Paritätsbit). Übliche Baudzahlen: 110, 300, 600, 1200, …, 115200Übliche Anzahl der Datenbits: 4, 5, 6, 7, 8
+
+% -> Abbildung Info1 mit Aufgaben
+
+\paragraph{Bemerkungen:}
+\begin{enumerate}\item Spannungs-Zeit-Diagramme werden üblicherweise für die serielle Datenübertragung angefertigt (Bitfolge nacheinander).
+Zur Erhöhung der Übertragungsgeschwindigkeit kann die die parallele Datenübertragung dienen (mehrere Bit werden gleichzeitig übertragen — teurer).\item Zur Erhöhung der Übertragungsgeschwindigkeit kann auch eine Übertragung mit mehr als 2 Kennzuständen verwendet werden. 
+\begin{itemize}\item 4 Kennzustände: 1Baud = 2bit\item 8 Kennzustände: 1Baud = 3bit
+\end{itemize}\item Erhöhung der Übertragungsgeschwindigkeit auch durch Verkürzung des Einheitsschrittes möglich (begrenzt)
+\end{enumerate}
+
+\section{Modulationsarten}
+
+\subsection{Modulierung als Rechtecksignale}
+Grundlage: Fourier-Synthese
+
+$$ f(t) = \sum\limits_{i=1}^\infty a_i \cdot sin(i \cdot t) + b_i \cdot cos(i \cdot t) $$
+
+
+\subsection{Frequenzmodulation}
+
+\subsection{Amplitudenmodulation}
+
+\subsection{Phasenumtastung}
+
+Binäre Werte werden einer Phasenverschiebung zugeordnet:
+\begin{description}\item[0] $= 0 \cdot \lambda $\item[1] $= \frac{1}{4} \cdot \lambda $
+\end{description}\paragraph{Erweiterung} Quad Phase Shift Keying
+\begin{description}\item[00] $= 0 \cdot \lambda $\item[01] $= \frac{1}{4} \cdot \lambda $\item[10] $= \frac{1}{2} \cdot \lambda $\item[11] $= \frac{3}{4} \cdot \lambda $
+\end{description}\paragraph{Bemerkung} Mit Hilfe eines Modems können im Frequenzbereich des der Telefonie (300-3400 Hz) digitale in analoge Signale umgewandelt werden und umgekehrt. 
+
+\section{Gleichzeitige Übertragung mehrerer Nachrichten (Multiplexverfahren)}
+
+\begin{center}
+\begin{pspicture}(0,0)(10,2)
+
+\psline{->}(0,0.7)(1,0.7)
+\psline{->}(0,0.9)(1,0.9)
+\psline{->}(0,1.1)(1,1.1)
+\psline{->}(0,1.3)(1,1.3)
+
+\psframe(1,0.4)(4,1.6)
+\rput(2.5,1){Multiplexer}
+
+\psline{->}(4,1)(6,1)
+
+\psframe(6,0.4)(9,1.6)
+\rput(7.5,1){Demultiplexer}
+
+\psline{->}(9,0.7)(10,0.7)
+\psline{->}(9,0.9)(10,0.9)
+\psline{->}(9,1.1)(10,1.1)
+\psline{->}(9,1.3)(10,1.3)
+
+\end{pspicture}
+\end{center}
+
+\begin{description}
+\item[Zeitmultiplexing] Unterteilung der Zeit in kleine Teilintervalle. Periodisch wird jeder zu übertragenden Nachricht ein Teilintervall zugeordnet. \item[Frequenzmultiplexing] Aufprägung mehrerer Nachrichten in unterschiedlichen Frequenzbereichen auf eine Grundfrequenz und Zerlegung des gesamten Frequenzspektrums beim Empfänger.
+Oversampling: Abtasten mit dem mehrfachen der Grundfrequenz. 
+\end{description}
+
+\section{Hardwarebandbreite und Bitübertragung}
+
+Hardware kann Spannung nicht in beliebig kurzen Intervallen wechseln. Das Rechteckdiagramm ist eine Idealisierung. Deswegen Begrenzung der höchsten Geschwindigkeit eines Signals.
+
+%->Abbildung
+\textbf{Bandbreite $B$ ist eine Eigenschaft des Übertragungsmediums.} (Maßeinheit: Herz)
+
+\section{Nyquist-Theorem}
+
+Stellt Zusammenhang zwischen der Bandbreite des Übertragungssystems und der theoretischen Höchstgeschwindigkeit $D$ dar:
+
+$$ D = 2 \cdot B \cdot log_2 k $$
+
+$k$ \ldots Anzahl der Kennzustände
+
+$D$ \ldots theoretische Höchstgeschnwindigkeit in $\frac{Bits}{Sekunde}$
+
+\section{Handshake und Betriebsarten}
+
+Handshake bezeichnet den Austausch von Informationen über die Sende- und Empfangsbereitschaft zusätzlich zur eigentlichen Nachrichtenübertragung.
+
+\begin{description}
+\item[Polling] Gegenstelle wird zyklisch auf Sendebereitschaft abgefragt
+Vorteil: einfache Realisierung
+Nachteil: keine Sendung zum beliebigem Zeitpunkt\item[Software-Handshakeing] Mitteilung des Senders an den Empfänger, dass Sendebereitschaft vorliegt(XON) oder nicht (XOFF)
+Nachteil: 3 Leitungen (2 Nachrichten + 1 Signal)
+Vorteil: große Entfernungen "noch machbar". (bidirektional)\item[Hardware-Handshakeing] Sendung der Informationen: 0(Ready) durch Empfänger an DTR (Data Terminal Ready). Oder Sendung von 1 (Busy=Empfangsbuffer voll). 
+Vorteil: Empfangszustand jedes Teilnehmers ist jederzeit verfügbar. 
+Nachteil: Zur Realisierung werden 7 Datenleitungen benötigt. 
+\end{description}
+
+\section{Ethernet}
+
+Ethernet ist grundlegende Norm für die Datenübertragung. 
+
+\paragraph{Bestandteile}
+\begin{itemize}\marginpar{Netzmafia Ethernet Typen}
+\item Medium: Koaxialkabel, Twisted Pair (Steckverbindungen)\item Übertragungsrate: z.B. 10Mbit/s\item Maximale Ausdehnung des Netzes: 2500m(Signallaufzeit/-stärke)
+\item Zugriffsverfahren: deterministische und stochastische Zugriffsverfahren\item Protokoll: Paketinformationen, Adressen\item Beziehungen zum OSI-Schichtenmodell
+\end{itemize}
+
+%\subsection{CRC}
+%TODO
+
+\section{Paket}
+
+\paragraph{Ergänzungen}Übertragendes Paket besteht aus Frame und Datenblock. %(Skizze)Frame beinhaltet im Header die Synchronisationsinformation.
+
+\begin{description}\item[Asynchrone Übertragung] Sender und Empfänger müssen ihre Übertragung zeitlich nicht verabreden (Notwendigkeit von Signalen, die Beginn und Ende der Übertragung eines Zeichens kennzeichnen)\item[Synchrone Übertragung] Empfangstakt wird auf Sendetakt abgestimmtIm Header des Pakets (durch Übertragung eines Synchronisationszeichens, etwa ASCII-SYN). Nach Empfang der Zeichenfolge "rastet" Empfänger ein.
+\end{description}Am Ende des Paketes werden Prüfsummen- bzw. CRC-Informationen über den Datenblock gesendet (Sicherung) und der Block wird abgeschlossen. 
+
+\section{Betriebsarten}
+\begin{description}\item[Simplex] Kommunikation in einer Richtung\item[Halbduplex] Wechselseitige Nutzung der Übertragungsmedien zum Senden und Empfangen\item[Duplex] Beide Teilnehmer sind über den gesamten Zeitraum Sender und Empfänger zugleich.
+\end{description}
+
+

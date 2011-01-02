@@ -1,14 +1,32 @@
 \chapter{Nachrichten und Signale}
-\begin{description}\item[Signal] elementare Informationsträger mit folgenden Eigenschaften:
+\begin{description}
+\item[Signal] elementare Informationsträger mit folgenden Eigenschaften:
 \begin{itemize}
 \item Gebunden an Übertragungsmedien
 \item Unterliegt einer zeitlichen Veränderung (Zeitfunktion)
-\end{itemize}\item[Nachricht] Sammlung von Signalen
+\end{itemize}
+\item[Nachricht] Sammlung von Signalen
 \end{description}
-\section{Übertragung von Signalen}\section{Analoge und digitale Signale}Ein Signal nimmt zu einem bestimmten Zeitpunkt $t$ einen bestimmten Wert $w$ an: $w(t)$
+
+\section{Übertragung von Signalen}
+
+
+
+
+
+
+
+
+
+
+
+\section{Analoge und digitale Signale}
+
+Ein Signal nimmt zu einem bestimmten Zeitpunkt $t$ einen bestimmten Wert $w$ an: $w(t)$
 
 \subsection{Kontinuierliche oder diskrete Signale}
-Ein Signal kann sowohl im Wert als auch in der Zeit kontinuierlich oder diskret sein. 
+
+Ein Signal kann sowohl im Wert als auch in der Zeit kontinuierlich oder diskret sein. 
 
 \begin{multicols}{2}
 \minisec{Zeit- und wertkontinuierlich:}
@@ -21,7 +39,8 @@
 \psplot[plotstyle=curve,linecolor=red]{0.01}{5}{x 2 mul SIN 2 div 1 add}
 
 \end{pspicture}
-\minisec{Wertkontinuierlich und zeitdiskret:}
+
+\minisec{Wertkontinuierlich und zeitdiskret:}
 
 \begin{pspicture}(-0.5,-0.5)(5,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,0)(5,2) 
@@ -38,7 +57,8 @@
 \psline[linecolor=red](4,0)(4,1.0)
 
 \end{pspicture}
-\minisec{Wertdiskret und zeitkontinuierlich:}
+
+\minisec{Wertdiskret und zeitkontinuierlich:}
 
 \begin{pspicture}(-0.5,-0.5)(5,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,0)(5,2) 
@@ -54,7 +74,8 @@
 \psline[linecolor=red](4,0)(5,0)
 
 \end{pspicture}
-\minisec{Wert- und zeitdiskret:}
+
+\minisec{Wert- und zeitdiskret:}
 
 \begin{pspicture}(-0.5,-0.5)(5,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=none]{->}(0,0)(0,0)(5,2) 
@@ -72,7 +93,10 @@
 
 \end{pspicture}
 \end{multicols}
-\subsection{Quantisierung von analogen Signalen}Ist die Zuordnung von Zeitintervallen und Klassifizierung in diskrete Werte.
+
+\subsection{Quantisierung von analogen Signalen}
+
+Ist die Zuordnung von Zeitintervallen und Klassifizierung in diskrete Werte.
 
 \begin{pspicture}(-0.5,-0.5)(10,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=none]{->}(0,0)(0,0)(5,2) 
@@ -109,12 +133,18 @@
 
 \end{pspicture}
 \definecolor{darkgreen}{rgb}{0,.6,0}
-\begin{description}\item[Digitales Signal] endlich viele Werte
-\begin{description}\item[Binär] zwei Werte\item[Ternär] drei Werte
-\end{description}\item[analoges Signal] unendlich viele Werte
+\begin{description}
+\item[Digitales Signal] endlich viele Werte
+\begin{description}
+\item[Binär] zwei Werte
+\item[Ternär] drei Werte
+\end{description}
+\item[analoges Signal] unendlich viele Werte
 \end{description}
 
-\section{Schritt- und Übertragungsgeschwindigkeit}\paragraph{Einheitsschritt} $T_s$ Zeitdauer für die Übertragung eines Signals:
+\section{Schritt- und Übertragungsgeschwindigkeit}
+
+\paragraph{Einheitsschritt} $T_s$ Zeitdauer für die Übertragung eines Signals:
 
 \begin{pspicture}(-0.5,-1)(5,1.5) 
 \psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,-1)(5,1) 
@@ -132,7 +162,8 @@
 \uput{1ex}[270](0.5,0){\color{red}$T_s$}
 
 \end{pspicture}
-\paragraph{Schrittgeschwindigkeit} $S=\frac{1}{T_s}$ Maßeinheit: Baud% (1 Baud = 1 Signal je Sekunde)
+
+\paragraph{Schrittgeschwindigkeit} $S=\frac{1}{T_s}$ Maßeinheit: Baud% (1 Baud = 1 Signal je Sekunde)
 
 \paragraph{Signal} Kennzustand für die Dauer eines Einheitsschrittes
 
@@ -152,7 +183,14 @@
 \uput{1ex}[90](4.5,0.5){\color{red}$1$}
 
 \end{pspicture}
-\subsection{Übertragungsgeschwindigkeit}$U = bit/s$Wichtig: Bei nicht-binärer Übertragung U != SBeispiel: Übertragung mit 4 Kennzuständen
+
+\subsection{Übertragungsgeschwindigkeit}
+
+$U = bit/s$
+
+Wichtig: Bei nicht-binärer Übertragung U != S
+
+Beispiel: Übertragung mit 4 Kennzuständen
 
 \begin{pspicture}(-2,-1)(5,2) 
 \psaxes[linewidth=1pt,labels=none,ticks=x]{->}(0,0)(0,-1)(5,1.5) 
@@ -179,7 +217,10 @@
 
 
 \end{pspicture}
-In einem Einheitsschritt können 2 Bit übertragen werden (S=1; U=2)\section{Übertragungsmedien}
+
+In einem Einheitsschritt können 2 Bit übertragen werden (S=1; U=2)
+
+\section{Übertragungsmedien}
 
 \begin{tabular}{p{0.25\textwidth}|p{0.35\textwidth}|p{0.35\textwidth}}
 
@@ -193,5 +234,20 @@ Radiowellen, Infrarot, Mikrowelle (Luft, Vakuum) & Kein Medium nötig & Langsam,
 Lich (LWL) & Extrem schnell, hoher Durchsatz & Teuer, reparaturunfreundlich
 
 \end{tabular}
-\subsection{Bemerkungen}
-\minisec{Elektrischer Strom}Material: Kupfer — bestes Preis/LeistungsverhältnisAufbau: Twised Pairs - Verdrillte Kabelpaare (Verringerung von Interferenzen)Koaxialkabel\minisec{Elektromagnetische Wellen}Bedingung: Sender und Empfänger (Realisationen) müssen quasioptisch verbunden sein. Zusätzliche Empfangseinrichtung notwendig. Problem: Abschirmung der übertragenen Informationen\minisec{Licht}Basis: Bessere Kodierungsmöglichkeit (Multiplex) des LichtesVorteil: keine elektromagnetischen Störungen
+
+\subsection{Bemerkungen}
+
+\minisec{Elektrischer Strom}
+Material: Kupfer — bestes Preis/Leistungsverhältnis
+Aufbau: 
+Twised Pairs - Verdrillte Kabelpaare (Verringerung von Interferenzen)
+Koaxialkabel
+
+\minisec{Elektromagnetische Wellen}
+Bedingung: Sender und Empfänger (Realisationen) müssen quasioptisch verbunden sein. Zusätzliche Empfangseinrichtung notwendig. 
+Problem: Abschirmung der übertragenen Informationen
+
+\minisec{Licht}
+Basis: Bessere Kodierungsmöglichkeit (Multiplex) des Lichtes
+Vorteil: keine elektromagnetischen Störungen
+
